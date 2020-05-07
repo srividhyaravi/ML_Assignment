@@ -147,7 +147,6 @@ def test(X_test, y_test):
     plt.title('Confusion Matrix', fontsize = 20) 
     plt.xlabel('Predicted', fontsize = 15) 
     plt.ylabel('Actual', fontsize = 15) 
-
-plt.show()
+    plt.show()
 test(X_test, y_test)
 
