@@ -2,8 +2,11 @@
 # coding: utf-8
 
 # In[1]:
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 132886cf6060abdd02edb1451b37f8ae83b7bc0b
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -45,7 +48,11 @@ X_train,y_train,X_test,y_test = split_data(data)
 
 
 #initializing params
+<<<<<<< HEAD
 alpha = 0.002
+=======
+alpha = 0.7
+>>>>>>> 132886cf6060abdd02edb1451b37f8ae83b7bc0b
 epoch = 100
 W = np.zeros(X_train.shape[1]+1)
 
@@ -66,9 +73,15 @@ def activation(z):
 
 #prediction function
 def predict(x):
+<<<<<<< HEAD
     z = np.dot(x, W[1:]) + W[0]
     g = activation(z)
     return g
+=======
+   z = np.dot(x, W[1:]) + W[0]
+   g = activation(z)
+   return g
+>>>>>>> 132886cf6060abdd02edb1451b37f8ae83b7bc0b
 
 
 # In[7]:
@@ -76,6 +89,7 @@ def predict(x):
 
 #training to learn the weights
 def train(X_train, y_train):
+<<<<<<< HEAD
         loss_train = []
         train_acc = []
         epochs = range(1,epoch+1)
@@ -112,6 +126,32 @@ def train(X_train, y_train):
         plt.ylabel('Loss')
         plt.legend()
         plt.show()
+=======
+       loss_train = []
+       epochs = range(1,epoch+1)
+       for i in range(epoch):
+           correct = 0
+           for x, y in zip(X_train, y_train):
+               prediction = predict(x)
+               y = np.array(y)[0][0]
+               x = np.array(x)[0]
+               error = y - prediction
+               actual_value = int(y)
+               if actual_value == prediction:
+                 correct += 1
+               W[1:] += alpha * error * x[0]
+               W[0] += alpha * error
+           training_accuracy =  correct/float(X_train.shape[0])*100.0      
+           loss_train.append(training_accuracy)
+           print("epoch:"+str(i)+"  weight:"+str(W)+"  learning rate:"+str(alpha)+"  Training Accuracy:"+str(training_accuracy))
+       plt.plot(epochs, loss_train, 'g', label='Training loss')        
+       plt.xlim(0,epoch)
+       plt.title('Training loss')
+       plt.xlabel('Epochs')
+       plt.ylabel('Loss')
+       plt.legend()
+       plt.show()
+>>>>>>> 132886cf6060abdd02edb1451b37f8ae83b7bc0b
 
 train(X_train, y_train)            
 
@@ -159,7 +199,11 @@ def test(X_test, y_test):
     plt.title('Confusion Matrix', fontsize = 20) 
     plt.xlabel('Predicted', fontsize = 15) 
     plt.ylabel('Actual', fontsize = 15) 
+<<<<<<< HEAD
 
 plt.show()
+=======
+    plt.show()
+>>>>>>> 132886cf6060abdd02edb1451b37f8ae83b7bc0b
 test(X_test, y_test)
 
